@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Jesta</string>
+    <string name="default_notification_channel_id">jesta</string>
+    <!-- <string name="facebook_app_id">484100003877453</string> -->
+    <string name="facebook_app_id">484100003877453</string>
+    <string name="facebook_client_token">e14749e54c1eae8bda72bb474de85f6e</string>
+</resources>
