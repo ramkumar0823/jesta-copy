@@ -31,18 +31,14 @@ const Notification = props => {
         <View><Text style={styles.loginWelcome}>{props.title}</Text></View>
               </View> */}
         <View style={styles.innerContainer}>
-          <Image source={NotifyAlert} style={styles.categoryImage} />
+          <Image source={props.Photo} style={styles.categoryImage} />
           <View>
             <View style={styles.upContainer}>
-              <Text style={styles.loginWelcome}>Reschedule Appointment</Text>
-              <Text style={styles.timeText}>15:36 PM</Text>
+              <Text style={styles.loginWelcome}>{props.Header}</Text>
+              <Text style={styles.timeText}>{props.Time}</Text>
             </View>
             <View style={styles.downContainer}>
-              <Text style={styles.alertText}>
-                {' '}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorndard dummy text ever{' '}
-              </Text>
+              <Text style={styles.alertText}>{props.Message}</Text>
             </View>
           </View>
         </View>
@@ -64,8 +60,8 @@ const styles = StyleSheet.create({
     borderColor: '#FCFBFB',
     borderRadius: 10,
     backgroundColor: colours.White,
-    height: width * 0.27,
-    width: width * 0.93,
+    // height: width * 0.25,
+    width: width * 0.9,
     marginHorizontal: 0,
     shadowColor: '#000',
     shadowOffset: {
@@ -75,14 +71,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 3,
-    marginVertical: 5,
+    marginVertical: width * 0.02,
     padding: 3,
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   categoryImage: {
-    height: width * 0.25,
-    width: width * 0.25,
+    height: width * 0.2,
+    width: width * 0.2,
     resizeMode: 'center',
   },
 
@@ -92,6 +90,9 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flexDirection: 'row',
+    width: width * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loginWelcome: {
     fontFamily: 'Urbanist-Bold',
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
     color: colours.Black,
     width: width * 0.45,
     lineHeight: 24,
-
     flex: 1,
+    marginVertical: 3,
   },
 
   timeText: {
@@ -117,8 +118,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flex: 1,
-
     width: width * 0.65,
 
     // height:width*0.18

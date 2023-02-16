@@ -12,48 +12,46 @@ import {
 } from 'react-native';
 import {colours, style, height, width} from '../../constants';
 import ArrowBackButton from '../../components/button/ArrowBackButton';
-import Searchfilter from '../../components/homescreen/SearchFilter';
 import CategoryArray from '../../assets/flatlistarray/CategoryArray';
 import Notification from '../../components/homescreen/Notification';
+import HeaderComp from '../../components/common/HeaderComp';
 import {useNavigation} from '@react-navigation/native';
 
 const NotificationsScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.innerContainer}>
-        <View style={{width: width * 0.92, alignSelf: 'center'}}>
-          <View style={styles.categoriesView}>
-            <ArrowBackButton />
-            <View style={styles.DoctorView}>
-              <Text style={style.header}>Notification</Text>
-            </View>
-          </View>
-          <View>
-            <Text style={{...style.alertText, fontSize: 17}}>TODAY</Text>
-          </View>
-        </View>
+    <SafeAreaView style={style.mainContainer}>
+      <View style={styles.hederContainer}>
+        <HeaderComp Header="Notification" />
       </View>
+      <View style={styles.innerContainer}>
+        <Text style={styles.dayText}>TODAY</Text>
 
-      {/* <------------------------------------------Doctors List------------------------------------------------> */}
+        {/* <------------------------------------------Doctors List------------------------------------------------> */}
 
-      <SafeAreaView style={styles.container3}>
-        <FlatList
-          nestedScrollEnabled={true}
-          key="_"
-          data={CategoryArray}
-          renderItem={({item}) => (
-            <Notification
-              Reschedule={() => {
-                navigation.navigate('Reschedule');
-              }}
-            />
-          )}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-        />
-      </SafeAreaView>
+        <SafeAreaView style={styles.container3}>
+          <FlatList
+            nestedScrollEnabled={true}
+            data={CategoryArray}
+            renderItem={({item}) => (
+              <Notification
+                Photo={item.notiimage}
+                Header={item.notiHead}
+                Time={item.notiTime}
+                Message={item.notiText}
+                Reschedule={() => {
+                  navigation.navigate('Reschedule');
+                }}
+              />
+            )}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            ListFooterComponent={<View />}
+            ListFooterComponentStyle={{height: width * 0.1}}
+          />
+        </SafeAreaView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -74,20 +72,30 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     alignItems: 'center',
   },
+  dayText: {
+    ...style.alertText,
+    fontSize: 17,
+    marginVertical: width * 0.01,
+  },
   DoctorView: {
     marginHorizontal: 10,
     padding: 0,
   },
+  hederContainer: {
+    width: width * 0.9,
+    marginVertical: width * 0.01,
+  },
 
   innerContainer: {
     backgroundColor: colours.White,
-    marginRight: width * 0.02,
+    width: width * 0.9,
+    height: height * 0.9,
   },
 
-  mainContainer: {
-    backgroundColor: colours.White,
-    height: height,
-  },
+  // mainContainer: {
+  //   backgroundColor: colours.White,
+  //   height: height,
+  // },
   searchFilter: {
     height: width * 0.12,
     width: width,
